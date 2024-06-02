@@ -1,0 +1,387 @@
+queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
+local UIS = game:GetService("UserInputService")
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local UIGradient = Instance.new("UIGradient")
+local TextLabel = Instance.new("TextLabel")
+local Frame_2 = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local UIGradient_2 = Instance.new("UIGradient")
+local TextLabel_2 = Instance.new("TextLabel")
+
+ScreenGui.Name = "Cheat"
+ScreenGui.Parent = game.CoreGui
+Frame.Name = "Frame1"
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.782014072, 0, 0, 0)
+Frame.Size = UDim2.new(0, 97, 0, 24)
+
+UICorner.CornerRadius = UDim.new(1, 0)
+UICorner.Parent = Frame
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 0, 0))}
+UIGradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.50), NumberSequenceKeypoint.new(1.00, 0.50)}
+UIGradient.Parent = Frame
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(0, 255, 17)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.134020612, 0, 0, 0)
+TextLabel.Size = UDim2.new(0, 71, 0, 24)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.LineHeight = 0.000
+TextLabel.Text = "Skill: false"
+TextLabel.TextColor3 = Color3.fromRGB(17, 255, 0)
+TextLabel.TextSize = 14.000
+Frame_2.Name = "Frame2"
+Frame_2.Parent = ScreenGui
+Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame_2.BorderSizePixel = 0
+Frame_2.Position = UDim2.new(0.878451884, 0, 0, 0)
+Frame_2.Size = UDim2.new(0, 97, 0, 24)
+
+UICorner_2.CornerRadius = UDim.new(1, 0)
+UICorner_2.Parent = Frame_2
+
+UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 0, 0))}
+UIGradient_2.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.50), NumberSequenceKeypoint.new(1.00, 0.50)}
+UIGradient_2.Parent = Frame_2
+
+TextLabel_2.Parent = Frame_2
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.BorderColor3 = Color3.fromRGB(0, 255, 17)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0.134020612, 0, 0, 0)
+TextLabel_2.Size = UDim2.new(0, 71, 0, 24)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.LineHeight = 0.000
+TextLabel_2.Text = "Lock: true"
+TextLabel_2.TextColor3 = Color3.fromRGB(17, 255, 0)
+TextLabel_2.TextSize = 14.000
+
+_G.Quest = "Quest Giver 41"
+_G.Quest2 = "Quest Giver 42"
+_G.E = "ItadoroV2"
+_G.EN = 1
+_G.NN = 5
+local LD = false
+local lock = true
+local numbers = {
+	One = false,
+	Two = false,
+	Three = false,
+	Four = false,
+	Zero = false
+}
+UIS.InputBegan:Connect(function(input)
+if input.KeyCode == Enum.KeyCode.P then
+if lock == true then
+lock = false
+game.CoreGui.Cheat.Frame2.TextLabel.Text = "Lock: True"
+elseif lock == false then
+lock = true
+game.CoreGui.Cheat.Frame2.TextLabel.Text = "Lock: False"
+end
+
+elseif input.KeyCode == Enum.KeyCode.LeftBracket then
+game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer("InteractControl",_G.Quest)
+elseif input.KeyCode == Enum.KeyCode.RightBracket then
+game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer("InteractControl",_G.Quest2)
+
+
+elseif input.KeyCode == Enum.KeyCode.Equals then
+_G.NN = _G.NN + 1
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = tostring(_G.NN), -- Required
+	Text = "", -- Required
+    Duration = 0.4,
+})
+elseif input.KeyCode == Enum.KeyCode.Minus then
+_G.NN = _G.NN - 1
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = tostring(_G.NN), -- Required
+	Text = "", -- Required
+    Duration = 0.4,
+})
+
+elseif input.KeyCode == Enum.KeyCode.E then
+local args = {
+    [1] = "CombatControl",
+    [2] = _G.E,
+    [3] = _G.EN,
+    [4] = true
+}
+game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer(unpack(args))
+
+elseif input.KeyCode == Enum.KeyCode.N then
+if not lock then return end
+for i=1,_G.NN do
+local player = game.Players.LocalPlayer
+for i, v in pairs(game:GetService("Workspace")["NPC's"]:GetChildren()) do
+if v:FindFirstChild("HumanoidRootPart") then
+local distance = (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).magnitude
+if distance <= 1000 and v.Humanoid.Health >= 0 then
+local pos = v.HumanoidRootPart.Position
+game:GetService("ReplicatedStorage"):WaitForChild("Assets"):WaitForChild("Skills"):WaitForChild("RemoteEvent"):FireServer(Vector3.new(pos.X, pos.Y, pos.Z), game.Players.LocalPlayer.Character)
+end end end end
+elseif input.KeyCode == Enum.KeyCode.B then
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+for i=1,_G.NN do
+local args = {
+    [1] = Vector3.new(mouse.Hit.X, mouse.Hit.Y, mouse.Hit.Z),
+    [2] = game.Players.LocalPlayer.Character}
+game:GetService("ReplicatedStorage"):WaitForChild("Assets"):WaitForChild("Skills"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+end
+
+
+elseif input.KeyCode == Enum.KeyCode.Z then
+if not lock then return end
+if numbers.One then
+	for i=1,_G.NN do
+	local PP = game.Players.LocalPlayer.Character.HumanoidRootPart
+	game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer("Specs", "Shadow Dagger Strike", Vector3.new(PP.Position.X, PP.Position.Y, PP.Position.Z))
+	end
+elseif numbers.Two then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohorago","E","Release")
+	end
+elseif numbers.Three then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohoragoAwk","E","Release")
+	end
+elseif numbers.Four then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","Megumo","E","Release")
+	end
+end
+
+
+elseif input.KeyCode == Enum.KeyCode.X then
+if not lock then return end
+if numbers.One then
+	for i=1,_G.NN do
+	local PP = game.Players.LocalPlayer.Character.HumanoidRootPart
+	game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer("Specs", "Ultimate Shadow Extraction", Vector3.new(PP.Position.X, PP.Position.Y, PP.Position.Z))
+	end
+elseif numbers.Two then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohorago","Z","Release")
+	end
+elseif numbers.Three then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohoragoAwk","Z","Release")
+	end
+elseif numbers.Four then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","Megumo","Z","Release")
+	end
+end
+
+elseif input.KeyCode == Enum.KeyCode.C then
+if not lock then return end
+if numbers.One then
+	for i=1,_G.NN do
+	local PP = game.Players.LocalPlayer.Character.HumanoidRootPart
+	game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer("Specs", "Cursed Blue", Vector3.new(PP.Position.X, PP.Position.Y, PP.Position.Z))
+	
+	end
+elseif numbers.Two then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohorago","X","Release")
+	end
+elseif numbers.Three then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohoragoAwk","X","Release")
+	end
+elseif numbers.Four then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","Megumo","X","Release")
+	end
+end
+
+elseif input.KeyCode == Enum.KeyCode.V then
+if not lock then return end
+if numbers.One then
+	for i=1,_G.NN do
+	local PP = game.Players.LocalPlayer.Character.HumanoidRootPart
+	game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer("Specs", "Nine Tails Power", Vector3.new(PP.Position.X, PP.Position.Y, PP.Position.Z))
+	
+	end
+elseif numbers.Two then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohorago","C","Release")
+	end
+elseif numbers.Three then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohoragoAwk","C","Release")
+	end
+elseif numbers.Four then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","Megumo","C","Release")
+	end
+end
+
+elseif input.KeyCode == Enum.KeyCode.R then
+if not lock then return end
+if numbers.One then
+	for i=1,_G.NN do
+	local PP = game.Players.LocalPlayer.Character.HumanoidRootPart
+	game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer("Specs", "Awakened Sakuno Domain", Vector3.new(PP.Position.X, PP.Position.Y, PP.Position.Z))
+	
+	end
+elseif numbers.Two then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohorago","T","Release")
+	end
+elseif numbers.Three then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohoragoAwk","T","Release")
+	end
+elseif numbers.Four then
+	for i=1,_G.NN do
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","Megumo","T","Release")
+	end
+end
+
+elseif input.KeyCode == Enum.KeyCode.T then
+if not lock then return end
+if numbers.One then
+	for i=1,_G.NN do
+	local PP = game.Players.LocalPlayer.Character.HumanoidRootPart
+	game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer("Specs", "Awakened Six Eyes", Vector3.new(PP.Position.X, PP.Position.Y, PP.Position.Z))
+	end
+elseif numbers.Two then
+	for i=1,_G.NN do
+
+	end
+elseif numbers.Three then
+	for i=1,_G.NN do
+
+	end
+elseif numbers.Four then
+	for i=1,_G.NN do
+	end
+elseif input.KeyCode == Enum.KeyCode.Y then
+if not lock then return end
+if numbers.One then
+	local PP = game.Players.LocalPlayer.Character.HumanoidRootPart
+	game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer("Specs", "Armament Haki V2", Vector3.new(PP.Position.X, PP.Position.Y, PP.Position.Z))
+elseif numbers.Two then
+	for i=1,_G.NN do
+
+	end
+elseif numbers.Three then
+	for i=1,_G.NN do
+
+	end
+elseif numbers.Four then
+	for i=1,_G.NN do
+	end
+end
+end
+
+elseif input.KeyCode == Enum.KeyCode.L then
+LD = true
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "L", -- Required
+	Text = "True", -- Required
+    Duration = 0.4,
+})
+
+elseif input.KeyCode == Enum.KeyCode.One then
+if not LD then return end
+if numbers[input.KeyCode.Name] == true then
+	numbers[input.KeyCode.Name] = false
+	game.CoreGui.Cheat.Frame1.TextLabel.Text = "Skill: None"
+elseif numbers[input.KeyCode.Name] == false then
+numbers.One = false
+numbers.Two = false
+numbers.Three = false
+numbers.Four = false
+numbers.Zero = false
+numbers[input.KeyCode.Name] = true
+game.CoreGui.Cheat.Frame1.TextLabel.Text = "Skill: "..tostring(input.KeyCode.Name)
+end
+
+elseif input.KeyCode == Enum.KeyCode.Two then
+if not LD then return end
+if numbers[input.KeyCode.Name] == true then
+	numbers[input.KeyCode.Name] = false
+	game.CoreGui.Cheat.Frame1.TextLabel.Text = "Skill: None"
+elseif numbers[input.KeyCode.Name] == false then
+numbers.One = false
+numbers.Two = false
+numbers.Three = false
+numbers.Four = false
+numbers.Zero = false
+numbers[input.KeyCode.Name] = true
+game.CoreGui.Cheat.Frame1.TextLabel.Text = "Skill: "..tostring(input.KeyCode.Name)
+end
+
+elseif input.KeyCode == Enum.KeyCode.Three then
+if not LD then return end
+if numbers[input.KeyCode.Name] == true then
+	numbers[input.KeyCode.Name] = false
+	game.CoreGui.Cheat.Frame1.TextLabel.Text = "Skill: None"
+elseif numbers[input.KeyCode.Name] == false then
+numbers.One = false
+numbers.Two = false
+numbers.Three = false
+numbers.Four = false
+numbers.Zero = false
+numbers[input.KeyCode.Name] = true
+game.CoreGui.Cheat.Frame1.TextLabel.Text = "Skill: "..tostring(input.KeyCode.Name)
+end
+
+elseif input.KeyCode == Enum.KeyCode.Four then
+if not LD then return end
+if numbers[input.KeyCode.Name] == true then
+	numbers[input.KeyCode.Name] = false
+	game.CoreGui.Cheat.Frame1.TextLabel.Text = "Skill: None"
+elseif numbers[input.KeyCode.Name] == false then
+numbers.One = false
+numbers.Two = false
+numbers.Three = false
+numbers.Four = false
+numbers.Zero = false
+numbers[input.KeyCode.Name] = true
+game.CoreGui.Cheat.Frame1.TextLabel.Text = "Skill: "..tostring(input.KeyCode.Name)
+end
+
+elseif input.KeyCode == Enum.KeyCode.Zero then
+if not LD then return end
+if numbers[input.KeyCode.Name] == true then
+numbers.One = t
+numbers.Two = false
+numbers.Three = false
+numbers.Four = false
+numbers.Zero = false
+numbers[input.KeyCode.Name] = false
+	game.CoreGui.Cheat.Frame1.TextLabel.Text = "Skill: None"
+elseif numbers[input.KeyCode.Name] == false then
+numbers.One = true
+numbers.Two = true
+numbers.Three = true
+numbers.Four = true
+numbers.Zero = true
+numbers[input.KeyCode.Name] = true
+game.CoreGui.Cheat.Frame1.TextLabel.Text = "Skill: "..tostring(input.KeyCode.Name)
+end
+
+end
+end)
+
+UIS.InputEnded:Connect(function(input)
+	if input.KeyCode == Enum.KeyCode.L then
+		LD = false
+	end
+end)
