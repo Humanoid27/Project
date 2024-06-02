@@ -1,4 +1,50 @@
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
+queueteleport([[
+local function onGameLoaded()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Humanoid27/Project/main/QWERT'))()
+end
+if game:IsLoaded() then
+    onGameLoaded()
+else
+    game.Loaded:Wait()
+    onGameLoaded()
+end
+
+]])
+
+
+function containsNumber(str)
+    local hasNumber = string.match(str, "%d")
+    return hasNumber ~= nil
+end
+local function cleanc(character)
+    for i, v in pairs(character:GetChildren()) do
+        if containsNumber(v.Name) then
+            print("Menghapus bagian dengan nama yang mengandung angka: " .. v.Name)
+            v:Destroy() end end end
+local player = game.Players.LocalPlayer
+local function onCharacterAdded(character)
+    local startTime = tick()  -- Waktu mulai
+    spawn(function()
+        while tick() - startTime < 5 do
+            cleanc(character)
+            wait(0.1)  
+        end
+    end)
+    local args = {
+        [1] = "SkillsControl",
+        [2] = "SakunoMohoragoAwk",
+        [3] = "V",
+        [4] = "Release",
+        [6] = CFrame.new(-1982.95361328125, 5.294821739196777, -10124.2216796875, -0.46859654784202576, -8.552319741284009e-08, -0.8834123015403748, -1.0066268174568904e-07, 1, -4.3414626560434044e-08, 0.8834123015403748, 6.858270751308737e-08, -0.46859654784202576)}
+game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer(unpack(args))
+end
+player.CharacterAdded:Connect(onCharacterAdded)
+if player.Character then
+    onCharacterAdded(player.Character)
+end
+
+
 local UIS = game:GetService("UserInputService")
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
