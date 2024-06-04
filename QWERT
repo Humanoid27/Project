@@ -438,6 +438,7 @@ UIS.InputEnded:Connect(function(input)
 	if numbers.Two then
 		for i=1,_G.NN do
 		game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohorago","E","Release")
+		end
 	else
 	end
 	elseif input.KeyCode == Enum.KeyCode.V then
@@ -445,6 +446,7 @@ UIS.InputEnded:Connect(function(input)
 	if numbers.Three then
 		for i=1,_G.NN do
 		game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohoragoAwk","C","Release")
+		end
 	else
 	end
 	end
