@@ -323,8 +323,7 @@ elseif numbers.Four then
 elseif input.KeyCode == Enum.KeyCode.Y then
 if not lock then return end
 if numbers.One then
-	local PP = game.Players.LocalPlayer.Character.HumanoidRootPart
-	game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer("Specs", "Armament Haki V2", Vector3.new(PP.Position.X, PP.Position.Y, PP.Position.Z))
+	game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer("Specs", "Armament Haki V2")
 elseif numbers.Two then
 	for i=1,_G.NN do
 
