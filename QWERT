@@ -185,7 +185,7 @@ if v:FindFirstChild("HumanoidRootPart") then
 local distance = (v.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).magnitude
 if distance <= 1000 and v.Humanoid.Health >= 0 then
 local pos = v.HumanoidRootPart.Position
-game:GetService("ReplicatedStorage"):WaitForChild("Assets"):WaitForChild("Skills"):WaitForChild("RemoteEvent"):FireServer(Vector3.new(pos.X, pos.Y, pos.Z), game.Players.LocalPlayer.Character)
+game:GetService("ReplicatedStorage"):WaitForChild("Assets"):WaitForChild("Skills"):WaitForChild("KaiduRemote"):FireServer(Vector3.new(pos.X, pos.Y, pos.Z), game.Players.LocalPlayer.Character)
 end end end end
 elseif input.KeyCode == Enum.KeyCode.B then
 local player = game.Players.LocalPlayer
@@ -194,7 +194,7 @@ for i=1,_G.NN do
 local args = {
     [1] = Vector3.new(mouse.Hit.X, mouse.Hit.Y, mouse.Hit.Z),
     [2] = game.Players.LocalPlayer.Character}
-game:GetService("ReplicatedStorage"):WaitForChild("Assets"):WaitForChild("Skills"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+game:GetService("ReplicatedStorage"):WaitForChild("Assets"):WaitForChild("Skills"):WaitForChild("KaiduRemote"):FireServer(unpack(args))
 end
 
 
