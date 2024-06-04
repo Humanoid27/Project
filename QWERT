@@ -172,7 +172,6 @@ local args = {
 game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer(unpack(args))
 
 elseif input.KeyCode == Enum.KeyCode.N then
-if not lock then return end
 for i=1,_G.NN do
 local player = game.Players.LocalPlayer
 for i, v in pairs(game:GetService("Workspace")["NPC's"]:GetChildren()) do
