@@ -45,12 +45,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"
 end
 player.CharacterAdded:Connect(onCharacterAdded)
 if player.Character then
-if game:IsLoaded() then
     onCharacterAdded(player.Character)
-else
-    game.Loaded:Wait()
-    onCharacterAdded(player.Character)
-end
 end
 
 
