@@ -202,7 +202,7 @@ if numbers.One then
 	end
 elseif numbers.Two then
 	for i=1,_G.NN do
-	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohorago","E","Release")
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohorago","E","Hold")
 	end
 elseif numbers.Three then
 	for i=1,_G.NN do
@@ -272,7 +272,7 @@ elseif numbers.Two then
 	end
 elseif numbers.Three then
 	for i=1,_G.NN do
-	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohoragoAwk","C","Release")
+	game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohoragoAwk","C","Hold")
 	end
 elseif numbers.Four then
 	for i=1,_G.NN do
@@ -433,5 +433,19 @@ end)
 UIS.InputEnded:Connect(function(input)
 	if input.KeyCode == Enum.KeyCode.L then
 		LD = false
+	elseif input.KeyCode == Enum.KeyCode.Z then
+	if not lock then return end
+	if numbers.Two then
+		for i=1,_G.NN do
+		game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohorago","E","Release")
+	else
+	end
+	elseif input.KeyCode == Enum.KeyCode.V then
+	if not lock then return end
+	if numbers.Three then
+		for i=1,_G.NN do
+		game:GetService("ReplicatedStorage").Game.Remotes.ServerHandler:FireServer("SkillsControl","SakunoMohoragoAwk","C","Release")
+	else
+	end
 	end
 end)
