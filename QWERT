@@ -42,6 +42,13 @@ local function onCharacterAdded(character)
         [4] = "Release",
         [6] = CFrame.new(-1982.95361328125, 5.294821739196777, -10124.2216796875, -0.46859654784202576, -8.552319741284009e-08, -0.8834123015403748, -1.0066268174568904e-07, 1, -4.3414626560434044e-08, 0.8834123015403748, 6.858270751308737e-08, -0.46859654784202576)}
 game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer(unpack(args))
+    local args = {
+        [1] = "SkillsControl",
+        [2] = "Ulqioro",
+        [3] = "V",
+        [4] = "Release",
+        [6] = CFrame.new(-1982.95361328125, 5.294821739196777, -10124.2216796875, -0.46859654784202576, -8.552319741284009e-08, -0.8834123015403748, -1.0066268174568904e-07, 1, -4.3414626560434044e-08, 0.8834123015403748, 6.858270751308737e-08, -0.46859654784202576)}
+game:GetService("ReplicatedStorage"):WaitForChild("Game"):WaitForChild("Remotes"):WaitForChild("ServerHandler"):FireServer(unpack(args))
 end
 player.CharacterAdded:Connect(onCharacterAdded)
 if player.Character then
