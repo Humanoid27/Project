@@ -1,0 +1,33 @@
+-- asumsi RaidsManager sudah di-require
+local RaidsManager = require(game:GetService("ReplicatedStorage").Scripts.Client.Manager.RaidsManager)
+
+-- Fungsi ambil data raid sekarang
+local function GetCurrentRaidData()
+    local raidInfo = RaidsManager.currentRaidInfo
+    local raidMapInfo = RaidsManager.raidsMapInfo
+    local countdown = RaidsManager.raidCountdown
+
+    if raidInfo or raidMapInfo then
+        return {
+            -- dari currentRaidInfo (trigger/instance)
+            raidId = raidInfo and raidInfo.raidId or nil,
+            mapId = raidInfo and raidInfo.mapId or nil,
+            instance = raidInfo and raidInfo.ins or nil, -- trigger object di map
+
+            -- dari raidsMapInfo (data map raid aktif)
+            hostId = raidMapInfo and raidMapInfo.hostId or nil,
+            fromMapId = raidMapInfo and raidMapInfo.fromMapId or nil,
+            userIds = raidMapInfo and raidMapInfo.userIds or nil,
+            closeTime = raidMapInfo and raidMapInfo.closeTime or nil,
+            slotIndex = raidMapInfo and raidMapInfo.slotIndex or nil,
+            currentLevel = raidMapInfo and raidMapInfo.currentLevel or nil,
+            maxLevel = raidMapInfo and raidMapInfo.maxLevel or nil,
+            chest = raidMapInfo and raidMapInfo.chest or nil,
+
+            -- countdown (cooldown raid)
+            countdown = countdown
+        }
+    else
+        return nil -- belum ada raid aktif
+    end
+end
