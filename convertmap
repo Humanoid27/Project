@@ -1,0 +1,29 @@
+
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RaidsConfig = require(game:GetService("ReplicatedStorage").Scripts.Configs.Raids)
+
+local function ConvertMapToMapId(mapInput)
+    return 50100 + mapInput
+end
+
+local function GetRaidIdFromPlayerInput(mapInput, grade)
+    local mapId = ConvertMapToMapId(mapInput)
+    for _, raid in pairs(RaidsConfig) do
+        if raid["MapId"] == mapId and raid["Grade"] == grade then
+            return raid["Id"]
+        end
+    end
+end
+
+local function GetRaidIdsFromMultipleInputs(inputs)
+    local results = {}
+    for _, entry in ipairs(inputs) do
+        table.insert(results, {
+            map    = entry.map,
+            grade  = entry.grade,
+            raidId = GetRaidIdFromPlayerInput(entry.map, entry.grade)
+        })
+    end
+    return results
+end
